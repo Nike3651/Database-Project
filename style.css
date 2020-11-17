@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bahnschrift SemiBold';    
+}
+html,body
+{
+    display: grid;
+    height: 100%;
+    place-items: center;
+    background: dimgray;
+}
+
+.LoginBox
+{
+    width: 500px;
+    background: floralwhite;
+    border-radius: 20px;
+    box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.322);
+}
+
+.LoginBox .title
+{
+    color: white;
+    line-height: 75px;
+    background: linear-gradient(to bottom right, #00ffff 0%, #ff3399 100%);
+    font-size: 35px;
+    border-radius: 20px 20px 0px 0px;
+    text-align: center;
+}
+
+.LoginBox form .field
+{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.LoginBox form .field input
+{
+    height: 100%;
+    width: 100%;
+    padding-left: 50px;
+    border-radius: 25px;
+    outline: none;
+    border: 1px solid #00ffff;
+    transition: all 0.2s ease;
+}
+
+.LoginBox form .field input:focus ~ label,
+.LoginBox form .field input:valid ~ label
+{
+    border-color: #007a7a;
+}
+.LoginBox form .field label
+{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    transition: all 0.2s ease;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+.LoginBox form .field input:focus ~ label,
+.LoginBox form .field input:valid ~ label
+{
+    top: 0%;
+    font-size: 14px;
+    background: #fff;
+    color: #007a7a;
+    transform: translateY(-50%);
+}
+
+.LoginBox form .pass-link
+{
+    margin: 10px 0 0 10px;
+}
+
+.LoginBox form .signup-link
+{
+    color: black;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.LoginBox form .signup-link a,
+.LoginBox form .pass-link a
+{
+    color: lightseagreen;
+    text-decoration: none;
+}
+
+.LoginBox form .signup-link a:hover,
+.LoginBox form .pass-link a:hover
+{
+    text-decoration: underline;
+}
+
+.LoginBox form .field input[type="submit"]
+{
+    color: #fff;
+    background: linear-gradient(to bottom right, #00ffff 0%, #ff3399 100%);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.LoginBox form .field input[type="submit"]:active
+{
+    transform: scale(0.90);
+}
