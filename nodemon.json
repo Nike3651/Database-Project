@@ -1,6 +1,7 @@
 {
     "env":
     {
-        "MongoPW": "Vaalpark"
+        "MongoPW": "Vaalpark",
+        "JWT_KEY": "Key123"
     }
-}
+} 
