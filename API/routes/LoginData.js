@@ -3,7 +3,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
+ 
 const UserLogin = require('../models/Login');
 
 router.post('/signup', (req, res, next) =>
@@ -48,6 +49,52 @@ router.post('/signup', (req, res, next) =>
             });  
         }
     });   
+});
+
+router.post('/login', (req, res, next) =>
+{
+    UserLogin.find({Email: req.body.Email}).exec().then(UserLogin =>
+        {
+            if(UserLogin < 1)
+            {
+                return res.status(401).json(
+                    {
+                        message: 'Authentication Failed!'
+                    }
+                );
+            }
+            bcrypt.compare(req.body.Password, UserLogin[0].Password, (err, result) =>
+            {
+                if(err)
+                {
+                    return res.status(401).json(
+                        {
+                            message: 'Authentication Failed!'
+                        }
+                    );
+                }
+                if(result)
+                {
+                    const token = jwt.sign({Email: UserLogin[0].Email}, process.env.JWT_KEY, {expiresIn: "1h"});
+                    return res.status(200).json(
+                        {
+                            message: 'Authentication Successful!',
+                            token: token
+                        }
+                    );
+                }
+                return res.status(401).json(
+                    {
+                        message: 'Authentication Failed!'
+                    }
+                );
+            });
+        })
+        .catch(err => 
+        {
+            console.log(err);
+            res.status(500).json({error: err});
+        }); 
 });
 
 router.delete('/:userID', (req, res, next) =>
