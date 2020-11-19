@@ -11,4 +11,4 @@ const LoginSchema = mongoose.Schema(
         Password: {type: String, required: true}
     });
 
-module.exports = mongoose.model('Login', LoginSchema);
+module.exports = mongoose.model('Login', LoginSchema); 
